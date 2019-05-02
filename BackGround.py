@@ -3,6 +3,14 @@ import pygame
 class BackGround(pygame.sprite.Sprite): 
 	def __init__(self, screenSize):
 		pygame.sprite.Sprite.__init__(self)
+		# 获取屏幕的高度和宽度
+		self.sWidth, self.sHeight = screenSize[0], screenSize[1]
+		# 地面背景图片
+		self.ground = pygame.image.load("images/ground.png").convert_alpha()
+		# 得到地面的矩形区域
+		self.groundRect = self.ground.get_rect()
+		# 设置地面背景初始位置
+		self.groundRect.left, self.groundRect.top = 0, self.sHeight - 30
 		# 储存背景图片的数组
 		self.images = []
 		self.images.extend([ \
@@ -27,9 +35,6 @@ class BackGround(pygame.sprite.Sprite):
 			self.bgImages[0].get_rect(), \
 			self.bgImages[1].get_rect() \
 			])
-		# 背景数量
-		# 获取屏幕的高度和宽度
-		self.sWidth, self.sHeight = screenSize[0], screenSize[1]
 		# 背景移动速度
 		self.speed = 1
 		# 设置背景初始时的位置
