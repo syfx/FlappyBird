@@ -24,7 +24,7 @@ class Wall(pygame.sprite.Sprite):
 		# 移动速度,与背景速度保持一致
 		self.speed = 2
 		# 两障碍物之间的宽度
-		self.safeSpace = 100
+		self.safeSpace = 110
 		# 保存游戏窗口大小
 		self.sWidth, self.sHeight = screenSize[0], screenSize[1]
 		# 设置初始位置

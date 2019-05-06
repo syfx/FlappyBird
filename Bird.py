@@ -59,4 +59,14 @@ class Player(pygame.sprite.Sprite):
 	# 死亡
 	def Died(self): 
 		if self.rect.top < self.sHeight - self.rect.height - 30: 
-			self.rect.top += 4;
+			self.rect.top += 6;
+
+	# 重置
+	def Reset(self):
+		self.image = self.flyImages[0]
+		self.rect.left, self.rect.top = 5, 1
+		self.speed = 3
+		self.downSpeed = 3
+		self.upSpeed = -6
+		self.rotateSpeed = 2.0
+		self.active = True 

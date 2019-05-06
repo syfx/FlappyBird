@@ -57,3 +57,8 @@ class BackGround(pygame.sprite.Sprite):
 	def Change(self):
 		self.sub = (self.sub + 1) % self.imageCount
 		self.image = self.images[self.sub]
+
+	# 重置背景位置
+	def Reset(self):
+		self.rect[0].left, self.rect[0].top = 0, 0
+		self.rect[1].left, self.rect[1].top = self.sWidth, 0
