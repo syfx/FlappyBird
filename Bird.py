@@ -23,15 +23,18 @@ class Player(pygame.sprite.Sprite):
 		# 得到当前Surface对象的矩形区域
 		self.rect = self.image.get_rect()
 		# 当前的速度，规定向上为正，向下为负
+		print(self.rect)
 		self.speed = 3
 		# 下落速度(向下为正)
 		self.downSpeed = 3
 		# 上升速度（向下为负）
 		self.upSpeed = -6
 		# 旋转速度（顺时针为负，逆时针为正）
-		self.rotateSpeed = 2
+		self.rotateSpeed = 2.0
 		# 初始化位置
 		self.rect.left, self.rect.top = 5, 1
+		# 是否死亡
+		self.active = True 
 
 	def fly(self): 
 		# 约束自傲鸟不超过游戏窗口
@@ -40,13 +43,20 @@ class Player(pygame.sprite.Sprite):
 			self.rect.top += self.speed;
 			# print(self.rotateSpeed)
 		pygame.transform.rotate(self.image, self.rotateSpeed)
-		self.rotateSpeed -= 1
+		self.rotateSpeed -= 1.0
 
 	# 努力向上飞起
 	def Power(self):
-		self.speed = self.upSpeed
-		self.rotateSpeed += 2
+		if self.active: 
+			self.speed = self.upSpeed
+			self.rotateSpeed += 2.0
 
 	# 向下坠落
 	def Drop(self):
-		self.speed = self.downSpeed
+		if self.active: 
+			self.speed = self.downSpeed
+
+	# 死亡
+	def Died(self): 
+		if self.rect.top < self.sHeight - self.rect.height - 30: 
+			self.rect.top += 4;

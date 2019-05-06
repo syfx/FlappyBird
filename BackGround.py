@@ -36,7 +36,7 @@ class BackGround(pygame.sprite.Sprite):
 			self.bgImages[1].get_rect() \
 			])
 		# 背景移动速度
-		self.speed = 1
+		self.speed = 2
 		# 设置背景初始时的位置
 		self.rect[0].left, self.rect[0].top = 0, 0
 		self.rect[1].left, self.rect[1].top = self.sWidth, 0

@@ -22,7 +22,7 @@ class Wall(pygame.sprite.Sprite):
 		self.rect = []
 		self.rect.extend([self.images[0].get_rect(), self.images[1].get_rect()])
 		# 移动速度,与背景速度保持一致
-		self.speed = 1
+		self.speed = 2
 		# 两障碍物之间的宽度
 		self.safeSpace = 100
 		# 保存游戏窗口大小
@@ -41,3 +41,12 @@ class Wall(pygame.sprite.Sprite):
 			return True
 		else: 
 			return False
+
+	# 判断是否碰撞
+	def IfCollider(self, objWithRect):
+		# 物体碰到上边障碍物
+		if objWithRect.rect.left + objWithRect.rect.width >= self.rect[0].left: 
+			if objWithRect.rect.top <= self.rect[0].top + self.rect[0].height or \
+			objWithRect.rect.top + objWithRect.rect.height >= self.rect[1].top:
+				return True
+		return False	
